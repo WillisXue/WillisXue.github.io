@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="WPF附加属性(AttachedProperty) | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657&#x2F;&#x2F; When set to True, Enter Key will update Source#region EnterUpdatesTextSource DependencyPrope">
+<meta name="description" content="To use the above attached property, you want to put this into a static class  public class static EnterUpdatesTextSourceBehaviour {} Then in the XAML, you want to add a reference to the assembly that">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WPF附加属性(AttachedProperty)">
 <meta property="og:url" content="http://willisxue.github.io/2020/02/18/WPF%E9%99%84%E5%8A%A0%E5%B1%9E%E6%80%A7-AttachedProperty/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657&#x2F;&#x2F; When set to True, Enter Key will update Source#region EnterUpdatesTextSource DependencyPrope">
+<meta property="og:description" content="To use the above attached property, you want to put this into a static class  public class static EnterUpdatesTextSourceBehaviour {} Then in the XAML, you want to add a reference to the assembly that">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-18T10:08:03.000Z">
-<meta property="article:modified_time" content="2020-02-18T10:13:40.503Z">
+<meta property="article:modified_time" content="2020-02-18T10:53:35.748Z">
 <meta property="article:author" content="WillisXue">
 <meta name="twitter:card" content="summary">
 
@@ -162,7 +162,7 @@
         
     
         
-        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+        <a title="email" href="mailto:2862348831@qq.com" target="_blank">
             
                 <svg class="iconfont-svg" aria-hidden="true">
                     <use xlink:href="#icon-email"></use>
@@ -172,7 +172,7 @@
         
     
         
-        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=2862348831&site=qq&menu=yes" target="_blank">
             
                 <svg class="iconfont-svg" aria-hidden="true">
                     <use xlink:href="#icon-qq"></use>
@@ -313,7 +313,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-02-18 18:13:40'>2020-02-18 18:08</time>
+        创建时间:<time class="date" title='更新时间: 2020-02-18 18:53:35'>2020-02-18 18:08</time>
         
     </div>
     <div class="article-meta">
@@ -351,9 +351,72 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// When set to True, Enter Key will update Source</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">region</span> EnterUpdatesTextSource DependencyProperty</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Property to determine if the Enter key should update the source. Default is False</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> DependencyProperty EnterUpdatesTextSourceProperty =</span><br><span class="line">    DependencyProperty.RegisterAttached(<span class="string">"EnterUpdatesTextSource"</span>, <span class="keyword">typeof</span> (<span class="keyword">bool</span>),</span><br><span class="line">                                        <span class="keyword">typeof</span> (TextBoxHelper),</span><br><span class="line">                                        <span class="keyword">new</span> PropertyMetadata(<span class="literal">false</span>, EnterUpdatesTextSourcePropertyChanged));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">GetEnterUpdatesTextSource</span>(<span class="params">DependencyObject obj</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">bool</span>) obj.GetValue(EnterUpdatesTextSourceProperty);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetEnterUpdatesTextSource</span>(<span class="params">DependencyObject obj, <span class="keyword">bool</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    obj.SetValue(EnterUpdatesTextSourceProperty, <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Changed Event - Attach PreviewKeyDown handler</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">EnterUpdatesTextSourcePropertyChanged</span>(<span class="params">DependencyObject obj,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                          DependencyPropertyChangedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sender = obj <span class="keyword">as</span> UIElement;</span><br><span class="line">    <span class="keyword">if</span> (obj != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">bool</span>) e.NewValue)</span><br><span class="line">        &#123;</span><br><span class="line">            sender.PreviewKeyDown += OnPreviewKeyDownUpdateSourceIfEnter;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            sender.PreviewKeyDown -= OnPreviewKeyDownUpdateSourceIfEnter;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// If key being pressed is the Enter key, and EnterUpdatesTextSource is set to true, then update source for Text property</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">OnPreviewKeyDownUpdateSourceIfEnter</span>(<span class="params"><span class="keyword">object</span> sender, KeyEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (e.Key == Key.Enter)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (GetEnterUpdatesTextSource((DependencyObject) sender))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> obj = sender <span class="keyword">as</span> UIElement;</span><br><span class="line">            BindingExpression textBinding = BindingOperations.GetBindingExpression(</span><br><span class="line">                obj, TextBox.TextProperty);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (textBinding != <span class="literal">null</span>)</span><br><span class="line">                textBinding.UpdateSource();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endregion</span> //EnterUpdatesTextSource DependencyProperty</span></span><br></pre></td></tr></table></figure>
+        <p>To use the above attached property, you want to put this into a static class</p>
+<pre><code class="C#"> public class static EnterUpdatesTextSourceBehaviour {}</code></pre>
+<p>Then in the XAML, you want to add a reference to the assembly that contains this class at the beginning<br>e.g.</p>
+<pre><code class="C#">xmlns:myHelpers=&quot;clr-namespace:MyHelpers</code></pre>
+<p>and then within the <TextBox> element add the attached property set to true.<br>e.g. </p>
+<pre><code class="C#">&lt;TextBox myHelpers:EnterUpdatesTextSourceBehaviour.EnterUpdatesTextSource=&quot;True&quot;&gt;`</code></pre>
+<pre><code class="C#">// When set to True, Enter Key will update Source
+#region EnterUpdatesTextSource DependencyProperty
+
+// Property to determine if the Enter key should update the source. Default is False
+public static readonly DependencyProperty EnterUpdatesTextSourceProperty =
+    DependencyProperty.RegisterAttached(&quot;EnterUpdatesTextSource&quot;, typeof (bool),
+                                        typeof (TextBoxHelper),
+                                        new PropertyMetadata(false, EnterUpdatesTextSourcePropertyChanged));
+
+// Get
+public static bool GetEnterUpdatesTextSource(DependencyObject obj)
+{
+    return (bool) obj.GetValue(EnterUpdatesTextSourceProperty);
+}
+
+// Set
+public static void SetEnterUpdatesTextSource(DependencyObject obj, bool value)
+{
+    obj.SetValue(EnterUpdatesTextSourceProperty, value);
+}
+
+// Changed Event - Attach PreviewKeyDown handler
+private static void EnterUpdatesTextSourcePropertyChanged(DependencyObject obj,
+                                                          DependencyPropertyChangedEventArgs e)
+{
+    var sender = obj as UIElement;
+    if (obj != null)
+    {
+        if ((bool) e.NewValue)
+        {
+            sender.PreviewKeyDown += OnPreviewKeyDownUpdateSourceIfEnter;
+        }
+        else
+        {
+            sender.PreviewKeyDown -= OnPreviewKeyDownUpdateSourceIfEnter;
+        }
+    }
+}
+
+// If key being pressed is the Enter key, and EnterUpdatesTextSource is set to true, then update source for Text property
+private static void OnPreviewKeyDownUpdateSourceIfEnter(object sender, KeyEventArgs e)
+{
+    if (e.Key == Key.Enter)
+    {
+        if (GetEnterUpdatesTextSource((DependencyObject) sender))
+        {
+            var obj = sender as UIElement;
+            BindingExpression textBinding = BindingOperations.GetBindingExpression(
+                obj, TextBox.TextProperty);
+
+            if (textBinding != null)
+                textBinding.UpdateSource();
+        }
+    }
+}
+
+#endregion //EnterUpdatesTextSource DependencyProperty</code></pre>
+
       
-       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 2862348831@qq.com </span>
     </div>
 </article>
 
@@ -368,7 +431,7 @@
     
     <p><span class="copy-title">本文作者:</span><a  title="WillisXue">WillisXue</a></p>
     <p><span class="copy-title">发布时间:</span>2020-02-18, 18:08:03</p>
-    <p><span class="copy-title">最后更新:</span>2020-02-18, 18:13:40</p>
+    <p><span class="copy-title">最后更新:</span>2020-02-18, 18:53:35</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/02/18/WPF%E9%99%84%E5%8A%A0%E5%B1%9E%E6%80%A7-AttachedProperty/" title="WPF附加属性(AttachedProperty)">http://willisxue.github.io/2020/02/18/WPF%E9%99%84%E5%8A%A0%E5%B1%9E%E6%80%A7-AttachedProperty/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -386,7 +449,7 @@
 
     </div>
     <div class="copyright">
-        <p class="footer-entry">©2016-2019 Yelog</p>
+        <p class="footer-entry">©2016-2020 WillisXue</p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
